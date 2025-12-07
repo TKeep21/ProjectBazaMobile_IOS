@@ -1,49 +1,56 @@
 import SwiftUI
 
 struct TaskListView: View {
-    @EnvironmentObject private var vm: TaskViewModel
-    @State private var showingCreate = false
+    @EnvironmentObject var taskManager: TaskManager
+    @State private var isPresentingNewTask = false
 
     var body: some View {
         NavigationStack {
             Group {
-                if vm.tasks.isEmpty {
-                    VStack(spacing: 12) {
-                        Text("Задач нет")
-                            .font(.title3)
-                            .foregroundColor(.secondary)
-                        Text("Нажмите + чтобы добавить новую задачу")
-                            .font(.subheadline)
+                if taskManager.tasks.isEmpty {
+                    VStack {
+                        Image(systemName: "tray")
+                            .font(.system(size: 40))
+                            .padding(.bottom, 8)
+                        Text("Задач пока нет")
+                            .font(.headline)
                             .foregroundColor(.secondary)
                     }
-                    .multilineTextAlignment(.center)
-                    .padding()
                 } else {
                     List {
-                        ForEach(vm.tasks) { task in
-                            TaskRow(task: task)
+                        ForEach(taskManager.tasks) { task in
+                            TaskRowView(
+                                task: task,
+                                onToggleCompleted: {
+                                    taskManager.toggleCompletion(for: task.id)
+                                }
+                            )
                         }
-                        .onDelete(perform: delete)
+                        .onDelete(perform: deleteTasks)
                     }
                 }
             }
             .navigationTitle("Задачи")
             .toolbar {
-  
-                Button {
-                    showingCreate = true
-                } label: {
-                    Image(systemName: "plus")
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        isPresentingNewTask = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
             }
-            .sheet(isPresented: $showingCreate) {
-                CreateTaskView()
-                    .environmentObject(vm)
+            .sheet(isPresented: $isPresentingNewTask) {
+                NewTaskView()
+                    .environmentObject(taskManager)
             }
         }
     }
 
-    private func delete(at offsets: IndexSet) {
-        offsets.map { vm.tasks[$0] }.forEach { vm.remove($0) }
+    private func deleteTasks(at offsets: IndexSet) {
+        for index in offsets {
+            let task = taskManager.tasks[index]
+            taskManager.deleteTask(id: task.id)
+        }
     }
 }

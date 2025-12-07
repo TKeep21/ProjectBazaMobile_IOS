@@ -2,12 +2,12 @@ import SwiftUI
 
 @main
 struct HWmobileApp: App {
-    @StateObject private var taskVM = TaskViewModel()
+    @StateObject private var taskManager = TaskManager()
 
     var body: some Scene {
         WindowGroup {
             TaskListView()
-                .environmentObject(taskVM)  
+                .environmentObject(taskManager)
         }
     }
 }

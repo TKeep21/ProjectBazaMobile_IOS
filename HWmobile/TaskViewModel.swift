@@ -35,7 +35,7 @@ final class TaskViewModel: ObservableObject {
         tasks.removeAll { $0.id == task.id }
     }
 
-    // Простой пример сортировки по приоритету (доп.функционал)
+    
     func sortByPriorityDescending() {
         tasks.sort { $0.priority.rawValue > $1.priority.rawValue }
     }
