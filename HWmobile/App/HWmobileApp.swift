@@ -6,7 +6,7 @@ struct HWmobileApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TaskListView()
+            MainTabView()
                 .environmentObject(taskManager)
         }
     }
