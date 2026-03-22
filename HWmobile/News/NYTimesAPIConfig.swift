@@ -1,8 +1,7 @@
 import Foundation
 
 enum NYTimesAPIConfig {
-    /// Ключ с [developer.nytimes.com](https://developer.nytimes.com). Удобнее задать переменную окружения `NYTIMES_API_KEY` в схеме Xcode.
-    private static let embeddedKey = ""
+    private static let embeddedKey = "zVIHW7MsLeCjveCuWsuCGzSnVT1AaN55bJRaTayNFXhtOCoK"
 
     static func resolvedAPIKey() -> String? {
         if let env = ProcessInfo.processInfo.environment["NYTIMES_API_KEY"] {
