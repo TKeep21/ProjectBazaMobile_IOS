@@ -19,7 +19,7 @@ struct TaskRow: View {
                         .font(.headline)
                         .strikethrough(task.isCompleted)
 
-                    if task.flagged {
+                    if task.isFlagged {
                         Image(systemName: "flag.fill")
                             .foregroundColor(.orange)
                     }
