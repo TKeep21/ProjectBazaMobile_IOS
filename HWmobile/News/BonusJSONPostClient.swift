@@ -1,6 +1,5 @@
 import Foundation
 
-/// Дополнительный запрос с JSON-телом и заголовками (+1 балл): jsonplaceholder.typicode.com
 enum BonusJSONPostClient {
     struct CreatePostBody: Encodable {
         let title: String

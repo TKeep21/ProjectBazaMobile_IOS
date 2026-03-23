@@ -26,6 +26,12 @@ struct NewsListView: View {
                     }
                 } else {
                     List {
+                        if let badge = viewModel.sourceBadgeText {
+                            Text(badge)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 4, trailing: 16))
+                        }
                         ForEach(viewModel.articles) { article in
                             NewsArticleRowView(article: article)
                                 .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
@@ -36,6 +42,15 @@ struct NewsListView: View {
                 }
             }
             .navigationTitle("Новости")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        viewModel.manualRefresh()
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                }
+            }
         }
         .onAppear {
             viewModel.onAppear()
@@ -86,33 +101,34 @@ private struct NewsArticleRowView: View {
 
 private struct NewsThumbnailView: View {
     let url: URL?
+    @StateObject private var loader: NewsImageLoader
+
+    init(url: URL?) {
+        self.url = url
+        _loader = StateObject(wrappedValue: NewsImageLoader(url: url))
+    }
 
     var body: some View {
         Group {
-            if let url {
-                AsyncImage(url: url) { phase in
-                    switch phase {
-                    case .empty:
-                        loadingPlaceholder
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 180)
-                            .clipped()
-                    case .failure:
-                        imagePlaceholder
-                    @unknown default:
-                        imagePlaceholder
-                    }
-                }
-            } else {
+            switch loader.phase {
+            case .idle, .loading:
+                loadingPlaceholder
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 180)
+                    .clipped()
+            case .failure:
                 imagePlaceholder
             }
         }
         .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .onAppear {
+            loader.loadIfNeeded()
+        }
     }
 
     private var loadingPlaceholder: some View {
