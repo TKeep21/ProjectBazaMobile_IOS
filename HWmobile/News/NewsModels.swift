@@ -1,6 +1,6 @@
 import Foundation
 
-struct NewsArticleDisplay: Identifiable, Equatable {
+struct NewsArticleDisplay: Identifiable, Equatable, Codable {
     let id: String
     let title: String
     let abstractText: String
@@ -9,7 +9,10 @@ struct NewsArticleDisplay: Identifiable, Equatable {
     let imageURL: URL?
 }
 
-// MARK: - NYT Top Stories API (https://developer.nytimes.com/docs/top-stories-api/1/overview)
+enum NewsDataSource {
+    case network
+    case cache
+}
 
 private struct TopStoriesResponseDTO: Decodable {
     let status: String
@@ -125,6 +128,7 @@ enum NewsServiceError: LocalizedError {
     case invalidPayload
     case missingAPIKey
     case badStatusCode(Int)
+    case missingCache
 
     var errorDescription: String? {
         switch self {
@@ -134,6 +138,8 @@ enum NewsServiceError: LocalizedError {
             return "Не задан ключ NY Times API. Укажите NYTIMES_API_KEY в схеме или заполните embeddedKey в NYTimesAPIConfig."
         case .badStatusCode(let code):
             return "Ошибка сети (код \(code))."
+        case .missingCache:
+            return "Локальный кэш новостей пуст."
         }
     }
 }

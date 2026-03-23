@@ -2,7 +2,6 @@ import Foundation
 import Combine
 
 final class TaskViewModel: ObservableObject {
-    // Любые изменения внутри tasks автоматически уведомят View
     @Published private(set) var tasks: [Task] = []
 
     init(sampleData: Bool = false) {
@@ -16,7 +15,6 @@ final class TaskViewModel: ObservableObject {
 
     func add(_ task: Task) {
         tasks.append(task)
-        // можно добавить сортировку/сохранение
     }
 
     func update(_ task: Task) {
