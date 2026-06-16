@@ -45,9 +45,33 @@ final class HWmobileUITests: XCTestCase {
         add(attachment)
     }
 
+    func testCreateNoteHappyPath() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-UITestMode", "1"]
+        app.launch()
+
+        openNotesTab(in: app)
+        app.buttons["addNoteButton"].tap()
+
+        let titleField = app.textFields["noteTitleField"]
+        XCTAssertTrue(titleField.waitForExistence(timeout: 5))
+        titleField.tap()
+        titleField.typeText("UI заметка")
+
+        app.buttons["saveNoteButton"].tap()
+
+        XCTAssertTrue(app.staticTexts["UI заметка"].waitForExistence(timeout: 5))
+    }
+
     private func openTasksTab(in app: XCUIApplication) {
         let tasksTab = app.tabBars.buttons["Задачи"]
         XCTAssertTrue(tasksTab.waitForExistence(timeout: 5))
         tasksTab.tap()
+    }
+
+    private func openNotesTab(in app: XCUIApplication) {
+        let notesTab = app.tabBars.buttons["Заметки"]
+        XCTAssertTrue(notesTab.waitForExistence(timeout: 5))
+        notesTab.tap()
     }
 }

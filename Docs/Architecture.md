@@ -10,6 +10,7 @@
 `MainTabView` отвечает только за вкладки приложения:
 
 - `NewsListView`
+- `NoteListView`
 - `TaskListView`
 
 ## Tasks
@@ -39,6 +40,16 @@
 `NewsViewModel` не разбирает JSON и не работает напрямую с файловой системой. Эти ответственности вынесены ниже по слоям.
 Если `NYTIMES_API_KEY` не задан и кэша нет, экран показывает демо-новости вместо ошибки.
 
+## Notes
+
+Фича заметок разделена на:
+
+- core module `HWmobileCore`: `Note`, `NoteDraft`, `NoteValidationError`, `NoteStore`, `NoteListQuery`, `NoteFileStore`
+- SwiftUI-адаптер состояния: `NoteManager`
+- экраны и компоненты: `NoteListView`, `NoteEditorView`
+
+`NoteStore` отвечает за создание, редактирование и удаление заметок. `NoteListQuery` отвечает за поиск и сортировку по дате обновления. `NoteFileStore` сохраняет заметки в JSON в Application Support.
+
 ## Tests
 
 Unit-тесты лежат в `HWmobileTests`:
@@ -47,12 +58,16 @@ Unit-тесты лежат в `HWmobileTests`:
 - `TaskFileStoreTests` покрывает сохранение и восстановление задач
 - `TaskListQueryTests` покрывает поиск, фильтры и сортировку
 - `TaskAnalyticsTests` покрывает статистику задач
+- `NoteStoreTests` покрывает создание, валидацию и редактирование заметок
+- `NoteListQueryTests` покрывает поиск и сортировку заметок
+- `NoteFileStoreTests` покрывает сохранение и восстановление заметок
 - `NewsDTOMapperTests` покрывает маппинг ответа NY Times
 - `CachedNewsStoreTests` покрывает сохранение и чтение кэша
 
 UI-тесты лежат в `HWmobileUITests`:
 
 - `testCreateTaskHappyPath` проверяет пользовательский сценарий создания задачи
+- `testCreateNoteHappyPath` проверяет пользовательский сценарий создания заметки
 - `testTasksScreenSnapshot` делает snapshot-скриншот экрана задач и прикладывает его к результатам тестов
 
 Тесты запускаются через shared scheme `HWmobile`.

@@ -7,3 +7,6 @@ xcuserdata/
 # Build products
 DerivedData/
 build/
+
+# Local secrets
+HWmobile/Config/Secrets.plist
