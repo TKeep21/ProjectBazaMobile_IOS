@@ -1,12 +1,19 @@
 import Foundation
+import HWmobileCore
 
-struct NewsLoadResult {
+nonisolated struct NewsLoadResult {
     let articles: [NewsArticleDisplay]
     let source: NewsDataSource
     let savedAt: Date?
 }
 
-actor NewsRepository {
+nonisolated protocol NewsLoading {
+    func loadCached() async -> NewsLoadResult?
+    func refreshFromNetwork(apiKey: String) async throws -> NewsLoadResult
+    func refreshWithFallback(apiKey: String) async throws -> NewsLoadResult
+}
+
+actor NewsRepository: NewsLoading {
     private let remoteService: NYTimesNewsService
     private let cacheStore: CachedNewsStore
 

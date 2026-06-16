@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import HWmobileCore
 import SwiftUI
 
 #if canImport(UIKit)

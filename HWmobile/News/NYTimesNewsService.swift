@@ -1,4 +1,5 @@
 import Foundation
+import HWmobileCore
 
 actor NYTimesNewsService {
     private let session: URLSession

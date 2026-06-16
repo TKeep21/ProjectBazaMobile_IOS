@@ -1,4 +1,5 @@
 import Foundation
+import HWmobileCore
 
 actor CachedNewsStore {
     private struct Payload: Codable {
@@ -11,8 +12,12 @@ actor CachedNewsStore {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
 
-    init(fileManager: FileManager = .default) {
+    init(fileManager: FileManager = .default, cacheFileURL: URL? = nil) {
         self.fileManager = fileManager
+        if let cacheFileURL {
+            self.cacheFileURL = cacheFileURL
+            return
+        }
         let base = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first
         let folder = (base ?? URL(fileURLWithPath: NSTemporaryDirectory()))
             .appendingPathComponent("news_cache", isDirectory: true)

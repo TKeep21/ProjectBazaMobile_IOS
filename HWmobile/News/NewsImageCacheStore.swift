@@ -1,5 +1,6 @@
 import CryptoKit
 import Foundation
+import HWmobileCore
 
 actor NewsImageCacheStore {
     private let fileManager: FileManager

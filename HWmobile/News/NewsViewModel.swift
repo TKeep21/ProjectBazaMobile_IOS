@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import HWmobileCore
 
 @MainActor
 final class NewsViewModel: ObservableObject {
@@ -8,10 +9,13 @@ final class NewsViewModel: ObservableObject {
     @Published private(set) var errorMessage: String?
     @Published private(set) var sourceBadgeText: String?
 
-    private let repository = NewsRepository()
+    private let repository: NewsLoading
     private var refreshLoopTask: _Concurrency.Task<Void, Never>?
-    private var didFireBonusPost = false
     private var firstNetworkRefreshDone = false
+
+    init(repository: NewsLoading = NewsRepository()) {
+        self.repository = repository
+    }
 
     deinit {
         refreshLoopTask?.cancel()
@@ -22,7 +26,6 @@ final class NewsViewModel: ObservableObject {
             await self?.applyCachedSnapshotIfNeeded()
         }
         startPeriodicRefreshIfNeeded()
-        fireBonusPostOnce()
     }
 
     func onDisappear() {
@@ -55,16 +58,6 @@ final class NewsViewModel: ObservableObject {
         }
     }
 
-    private func fireBonusPostOnce() {
-        guard !didFireBonusPost else {
-            return
-        }
-        didFireBonusPost = true
-        _Concurrency.Task {
-            await BonusJSONPostClient.sendSamplePost()
-        }
-    }
-
     private func applyCachedSnapshotIfNeeded() async {
         guard articles.isEmpty else {
             return
@@ -94,7 +87,9 @@ final class NewsViewModel: ObservableObject {
                 errorMessage = nil
                 return
             }
-            errorMessage = NewsServiceError.missingAPIKey.errorDescription
+            articles = NewsDemoData.articles
+            sourceBadgeText = Self.makeSourceBadge(source: .demo, savedAt: nil)
+            errorMessage = nil
             return
         }
         firstNetworkRefreshDone = true
@@ -123,6 +118,8 @@ final class NewsViewModel: ObservableObject {
         switch source {
         case .network:
             return nil
+        case .demo:
+            return "Демо-новости: добавьте NYTIMES_API_KEY для загрузки из API"
         case .cache:
             if let savedAt {
                 let formatter = RelativeDateTimeFormatter()

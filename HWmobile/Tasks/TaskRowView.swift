@@ -1,4 +1,5 @@
 import SwiftUI
+import HWmobileCore
 
 struct TaskRowView: View {
     let task: Task

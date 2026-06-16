@@ -1,7 +1,7 @@
 import Foundation
 
 enum NYTimesAPIConfig {
-    private static let embeddedKey = "zVIHW7MsLeCjveCuWsuCGzSnVT1AaN55bJRaTayNFXhtOCoK"
+    private static let embeddedKey = ""
 
     static func resolvedAPIKey() -> String? {
         if let env = ProcessInfo.processInfo.environment["NYTIMES_API_KEY"] {

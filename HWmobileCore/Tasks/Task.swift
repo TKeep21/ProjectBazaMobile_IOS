@@ -1,16 +1,16 @@
 import Foundation
 
-struct Task: Identifiable, Codable, Equatable {
-    let id: UUID
-    var title: String
-    var details: String?
-    var priority: TaskPriority
-    var isFlagged: Bool
-    var dueDate: Date?
-    var isCompleted: Bool
-    let createdAt: Date
+public struct Task: Identifiable, Codable, Equatable {
+    public let id: UUID
+    public var title: String
+    public var details: String?
+    public var priority: TaskPriority
+    public var isFlagged: Bool
+    public var dueDate: Date?
+    public var isCompleted: Bool
+    public let createdAt: Date
 
-    init(
+    public init(
         id: UUID = UUID(),
         title: String,
         details: String? = nil,
@@ -29,5 +29,4 @@ struct Task: Identifiable, Codable, Equatable {
         self.isCompleted = isCompleted
         self.createdAt = createdAt
     }
-    
 }

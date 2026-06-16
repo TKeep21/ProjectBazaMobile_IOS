@@ -1,25 +1,42 @@
 import Foundation
 
-struct NewsArticleDisplay: Identifiable, Equatable, Codable {
-    let id: String
-    let title: String
-    let abstractText: String
-    let sourceLabel: String
-    let publishedAt: Date?
-    let imageURL: URL?
+public struct NewsArticleDisplay: Identifiable, Equatable, Codable {
+    public let id: String
+    public let title: String
+    public let abstractText: String
+    public let sourceLabel: String
+    public let publishedAt: Date?
+    public let imageURL: URL?
+
+    public init(
+        id: String,
+        title: String,
+        abstractText: String,
+        sourceLabel: String,
+        publishedAt: Date?,
+        imageURL: URL?
+    ) {
+        self.id = id
+        self.title = title
+        self.abstractText = abstractText
+        self.sourceLabel = sourceLabel
+        self.publishedAt = publishedAt
+        self.imageURL = imageURL
+    }
 }
 
-enum NewsDataSource {
+public enum NewsDataSource {
     case network
     case cache
+    case demo
 }
 
-private struct TopStoriesResponseDTO: Decodable {
+nonisolated private struct TopStoriesResponseDTO: Decodable {
     let status: String
     let results: [TopStoryResultDTO]
 }
 
-private struct TopStoryResultDTO: Decodable {
+nonisolated private struct TopStoryResultDTO: Decodable {
     let section: String
     let subsection: String?
     let title: String
@@ -39,25 +56,13 @@ private struct TopStoryResultDTO: Decodable {
     }
 }
 
-private struct TopStoryMultimediaDTO: Decodable {
+nonisolated private struct TopStoryMultimediaDTO: Decodable {
     let type: String
     let url: String
 }
 
-enum NewsDTOMapper {
-    private static let isoParser: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return f
-    }()
-
-    private static let isoParserNoFraction: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime]
-        return f
-    }()
-
-    static func displayArticles(from data: Data) throws -> [NewsArticleDisplay] {
+public enum NewsDTOMapper {
+    nonisolated public static func displayArticles(from data: Data) throws -> [NewsArticleDisplay] {
         let decoder = JSONDecoder()
         let dto = try decoder.decode(TopStoriesResponseDTO.self, from: data)
         guard dto.status == "OK" else {
@@ -66,7 +71,7 @@ enum NewsDTOMapper {
         return dto.results.compactMap { mapResult($0) }
     }
 
-    private static func mapResult(_ dto: TopStoryResultDTO) -> NewsArticleDisplay? {
+    nonisolated private static func mapResult(_ dto: TopStoryResultDTO) -> NewsArticleDisplay? {
         let trimmedUri = dto.uri.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedUri.isEmpty else {
             return nil
@@ -84,7 +89,7 @@ enum NewsDTOMapper {
         )
     }
 
-    private static func makeSourceLabel(section: String, subsection: String) -> String {
+    nonisolated private static func makeSourceLabel(section: String, subsection: String) -> String {
         let sec = section.trimmingCharacters(in: .whitespacesAndNewlines)
         let sub = subsection.trimmingCharacters(in: .whitespacesAndNewlines)
         if sec.isEmpty, sub.isEmpty {
@@ -99,18 +104,22 @@ enum NewsDTOMapper {
         return "The New York Times — \(sec), \(sub)"
     }
 
-    private static func parseDate(_ raw: String) -> Date? {
+    nonisolated private static func parseDate(_ raw: String) -> Date? {
         let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmed.isEmpty {
             return nil
         }
-        if let d = isoParser.date(from: trimmed) {
+        let parser = ISO8601DateFormatter()
+        parser.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let d = parser.date(from: trimmed) {
             return d
         }
-        return isoParserNoFraction.date(from: trimmed)
+        let parserNoFraction = ISO8601DateFormatter()
+        parserNoFraction.formatOptions = [.withInternetDateTime]
+        return parserNoFraction.date(from: trimmed)
     }
 
-    private static func pickImageURL(from items: [TopStoryMultimediaDTO]?) -> URL? {
+    nonisolated private static func pickImageURL(from items: [TopStoryMultimediaDTO]?) -> URL? {
         guard let items else {
             return nil
         }
@@ -124,18 +133,18 @@ enum NewsDTOMapper {
     }
 }
 
-enum NewsServiceError: LocalizedError {
+public enum NewsServiceError: LocalizedError, Equatable {
     case invalidPayload
     case missingAPIKey
     case badStatusCode(Int)
     case missingCache
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .invalidPayload:
             return "Не удалось разобрать ответ сервера новостей."
         case .missingAPIKey:
-            return "Не задан ключ NY Times API. Укажите NYTIMES_API_KEY в схеме или заполните embeddedKey в NYTimesAPIConfig."
+            return "Не задан ключ NY Times API. Укажите NYTIMES_API_KEY в схеме запуска."
         case .badStatusCode(let code):
             return "Ошибка сети (код \(code))."
         case .missingCache:

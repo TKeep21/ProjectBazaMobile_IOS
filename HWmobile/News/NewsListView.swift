@@ -1,4 +1,5 @@
 import SwiftUI
+import HWmobileCore
 
 struct NewsListView: View {
     @StateObject private var viewModel = NewsViewModel()
@@ -150,8 +151,4 @@ private struct NewsThumbnailView: View {
         .frame(maxWidth: .infinity)
         .frame(height: 180)
     }
-}
-
-#Preview {
-    NewsListView()
 }

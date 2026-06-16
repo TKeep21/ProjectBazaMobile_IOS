@@ -6,11 +6,65 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1D9F3BAD47F14C7EBBFE2691 /* HWmobileCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A334CA08446B47F68ED13BBF /* HWmobileCore.framework */; };
+		ABC67EFAEC824FA7A316B457 /* HWmobileCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A334CA08446B47F68ED13BBF /* HWmobileCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8EA10C8A23EA4087B1C20151 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC4D500C2EDCB5A900ED9DE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30E13F946681463293FA91E2;
+			remoteInfo = HWmobileCore;
+		};
+		BE8623156F7E4496ACE9422D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC4D500C2EDCB5A900ED9DE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30E13F946681463293FA91E2;
+			remoteInfo = HWmobileCore;
+		};
+		DA9D3F62EC464EBABFFAE431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC4D500C2EDCB5A900ED9DE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC4D50132EDCB5A900ED9DE4;
+			remoteInfo = HWmobile;
+		};
+		EF837AE4203B4DB1A3D5161B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC4D500C2EDCB5A900ED9DE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC4D50132EDCB5A900ED9DE4;
+			remoteInfo = HWmobile;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		321B3AEE724247F58BC30E65 /* HWmobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HWmobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		707639C0A8684D0791B4A33F /* HWmobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HWmobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A334CA08446B47F68ED13BBF /* HWmobileCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HWmobileCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4D50142EDCB5A900ED9DE4 /* HWmobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HWmobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		40B58CCD59EC42769ED9B9E4 /* HWmobileCore */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HWmobileCore;
+			sourceTree = "<group>";
+		};
+		5F693F320E5742B2BE227E73 /* HWmobileTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HWmobileTests;
+			sourceTree = "<group>";
+		};
+		88652DFD7F4B447EBB122A0D /* HWmobileUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HWmobileUITests;
+			sourceTree = "<group>";
+		};
 		CC4D50162EDCB5A900ED9DE4 /* HWmobile */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = HWmobile;
@@ -19,7 +73,30 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ADB0EE05CAE7480A8C039060 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D9F3BAD47F14C7EBBFE2691 /* HWmobileCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4B688CCE42940BAB40A8ED0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC4D50112EDCB5A900ED9DE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABC67EFAEC824FA7A316B457 /* HWmobileCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB22E43E234C4621894A423C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				CC4D50162EDCB5A900ED9DE4 /* HWmobile */,
+				40B58CCD59EC42769ED9B9E4 /* HWmobileCore */,
+				5F693F320E5742B2BE227E73 /* HWmobileTests */,
+				88652DFD7F4B447EBB122A0D /* HWmobileUITests */,
 				CC4D50152EDCB5A900ED9DE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				CC4D50142EDCB5A900ED9DE4 /* HWmobile.app */,
+				A334CA08446B47F68ED13BBF /* HWmobileCore.framework */,
+				321B3AEE724247F58BC30E65 /* HWmobileTests.xctest */,
+				707639C0A8684D0791B4A33F /* HWmobileUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +131,51 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		30E13F946681463293FA91E2 /* HWmobileCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA82F589DBE14B138DF5DF01 /* Build configuration list for PBXNativeTarget "HWmobileCore" */;
+			buildPhases = (
+				880C3D72E9194F6AA2076646 /* Sources */,
+				C4B688CCE42940BAB40A8ED0 /* Frameworks */,
+				0C2EB692AAAE470B9A26FAAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				40B58CCD59EC42769ED9B9E4 /* HWmobileCore */,
+			);
+			name = HWmobileCore;
+			packageProductDependencies = (
+			);
+			productName = HWmobileCore;
+			productReference = A334CA08446B47F68ED13BBF /* HWmobileCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		32BF33BEA017447D8C288B08 /* HWmobileUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB41158B821246A2915095C8 /* Build configuration list for PBXNativeTarget "HWmobileUITests" */;
+			buildPhases = (
+				EBF85B5DB9DD4A4790BAE2EC /* Sources */,
+				FB22E43E234C4621894A423C /* Frameworks */,
+				EA9DE77E7A954754A6893AE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA4136EBA560497BBE51E214 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				88652DFD7F4B447EBB122A0D /* HWmobileUITests */,
+			);
+			name = HWmobileUITests;
+			packageProductDependencies = (
+			);
+			productName = HWmobileUITests;
+			productReference = 707639C0A8684D0791B4A33F /* HWmobileUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CC4D50132EDCB5A900ED9DE4 /* HWmobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC4D501F2EDCB5AC00ED9DE4 /* Build configuration list for PBXNativeTarget "HWmobile" */;
@@ -59,6 +187,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				71EC664B31C24DA3985B846A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CC4D50162EDCB5A900ED9DE4 /* HWmobile */,
@@ -70,6 +199,30 @@
 			productReference = CC4D50142EDCB5A900ED9DE4 /* HWmobile.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E49FF107A86143D580382801 /* HWmobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C40D8A707DF5436FADC75EC2 /* Build configuration list for PBXNativeTarget "HWmobileTests" */;
+			buildPhases = (
+				D39CEC12649246209DCDC0B3 /* Sources */,
+				ADB0EE05CAE7480A8C039060 /* Frameworks */,
+				92FC6AFE38F1473788D526F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC1BFCA02BF7453AB4754A5C /* PBXTargetDependency */,
+				62663072B776473AA9DFB328 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5F693F320E5742B2BE227E73 /* HWmobileTests */,
+			);
+			name = HWmobileTests;
+			packageProductDependencies = (
+			);
+			productName = HWmobileTests;
+			productReference = 321B3AEE724247F58BC30E65 /* HWmobileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -80,8 +233,19 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					30E13F946681463293FA91E2 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					32BF33BEA017447D8C288B08 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = CC4D50132EDCB5A900ED9DE4;
+					};
 					CC4D50132EDCB5A900ED9DE4 = {
 						CreatedOnToolsVersion = 26.0;
+					};
+					E49FF107A86143D580382801 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = CC4D50132EDCB5A900ED9DE4;
 					};
 				};
 			};
@@ -99,13 +263,37 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				30E13F946681463293FA91E2 /* HWmobileCore */,
 				CC4D50132EDCB5A900ED9DE4 /* HWmobile */,
+				E49FF107A86143D580382801 /* HWmobileTests */,
+				32BF33BEA017447D8C288B08 /* HWmobileUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0C2EB692AAAE470B9A26FAAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92FC6AFE38F1473788D526F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC4D50122EDCB5A900ED9DE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA9DE77E7A954754A6893AE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +303,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		880C3D72E9194F6AA2076646 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC4D50102EDCB5A900ED9DE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D39CEC12649246209DCDC0B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBF85B5DB9DD4A4790BAE2EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -124,7 +333,123 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		62663072B776473AA9DFB328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30E13F946681463293FA91E2 /* HWmobileCore */;
+			targetProxy = BE8623156F7E4496ACE9422D /* PBXContainerItemProxy */;
+		};
+		71EC664B31C24DA3985B846A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30E13F946681463293FA91E2 /* HWmobileCore */;
+			targetProxy = 8EA10C8A23EA4087B1C20151 /* PBXContainerItemProxy */;
+		};
+		BC1BFCA02BF7453AB4754A5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC4D50132EDCB5A900ED9DE4 /* HWmobile */;
+			targetProxy = DA9D3F62EC464EBABFFAE431 /* PBXContainerItemProxy */;
+		};
+		CA4136EBA560497BBE51E214 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC4D50132EDCB5A900ED9DE4 /* HWmobile */;
+			targetProxy = EF837AE4203B4DB1A3D5161B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		145F20E6533045ADB174F4A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = afa.HWmobileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HWmobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HWmobile";
+			};
+			name = Debug;
+		};
+		421F19D893F34376B67ECC0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = afa.HWmobileUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = HWmobile;
+			};
+			name = Debug;
+		};
+		6271B1EEDA9C43B5AB927A31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = afa.HWmobileUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = HWmobile;
+			};
+			name = Release;
+		};
+		AE94B6FFBF96416D8C79F097 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = afa.HWmobileCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C0270C5CB86B4B19980284C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = afa.HWmobileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HWmobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HWmobile";
+			};
+			name = Release;
+		};
 		CC4D501D2EDCB5AC00ED9DE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -257,6 +582,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -291,6 +617,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -311,9 +638,46 @@
 			};
 			name = Release;
 		};
+		FCB5D827A3964976A36D97DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = afa.HWmobileCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BB41158B821246A2915095C8 /* Build configuration list for PBXNativeTarget "HWmobileUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				421F19D893F34376B67ECC0B /* Debug */,
+				6271B1EEDA9C43B5AB927A31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C40D8A707DF5436FADC75EC2 /* Build configuration list for PBXNativeTarget "HWmobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				145F20E6533045ADB174F4A4 /* Debug */,
+				C0270C5CB86B4B19980284C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CC4D500F2EDCB5A900ED9DE4 /* Build configuration list for PBXProject "HWmobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -328,6 +692,15 @@
 			buildConfigurations = (
 				CC4D50202EDCB5AC00ED9DE4 /* Debug */,
 				CC4D50212EDCB5AC00ED9DE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA82F589DBE14B138DF5DF01 /* Build configuration list for PBXNativeTarget "HWmobileCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCB5D827A3964976A36D97DD /* Debug */,
+				AE94B6FFBF96416D8C79F097 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

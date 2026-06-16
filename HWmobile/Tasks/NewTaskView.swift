@@ -1,4 +1,5 @@
 import SwiftUI
+import HWmobileCore
 
 struct NewTaskView: View {
     @EnvironmentObject var taskManager: TaskManager
@@ -12,7 +13,9 @@ struct NewTaskView: View {
             Form {
                 Section("Информация") {
                     TextField("Название", text: $draft.title)
+                        .accessibilityIdentifier("taskTitleField")
                     TextField("Описание", text: $draft.details)
+                        .accessibilityIdentifier("taskDetailsField")
                 }
 
                 Section("Параметры") {
@@ -52,6 +55,7 @@ struct NewTaskView: View {
                         save()
                     }
                     .disabled(!draft.canBeSaved)
+                    .accessibilityIdentifier("saveTaskButton")
                 }
             }
         }

@@ -9,16 +9,13 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Новости", systemImage: "newspaper")
                 }
+                .accessibilityIdentifier("newsTab")
             TaskListView()
                 .environmentObject(taskManager)
                 .tabItem {
                     Label("Задачи", systemImage: "checklist")
                 }
+                .accessibilityIdentifier("tasksTab")
         }
     }
-}
-
-#Preview {
-    MainTabView()
-        .environmentObject(TaskManager())
 }

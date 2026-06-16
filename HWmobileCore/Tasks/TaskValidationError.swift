@@ -1,9 +1,9 @@
 import Foundation
 
-enum TaskValidationError: LocalizedError {
+public enum TaskValidationError: LocalizedError, Equatable {
     case emptyTitle
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .emptyTitle:
             return "Название задачи не может быть пустым."
